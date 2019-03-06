@@ -1,0 +1,171 @@
+$inactiveColor: #eee;
+$activeColor: red;
+
+$height: 200px;
+$width: 100px;
+$bar: 30px;
+
+html, body, .container{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 980px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.watch-body{
+    vertical-align: middle;
+}
+
+.segments{
+    position: relative;
+    width: $width;
+    height: $height;
+    display: inline-block;
+    margin-right: 30px;
+    z-index: 2;
+    .segment{
+        position: absolute;
+        background-color: $inactiveColor;
+    }
+    .segment-one{
+        top: 0;
+        left: 0;
+        height: $bar;
+        width: 100%;
+
+    }
+    .segment-two{
+        width: $bar;
+        height: 100px;
+        right: 0;
+        top: 0;
+    }
+    .segment-three{
+        width: $bar;
+        height: 100px;
+        bottom: 0;
+        right: 0;
+    }
+    .segment-four{
+        height: $bar;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+    .segment-five{
+        height: 100px;
+        width: $bar;
+        left: 0;
+        bottom: 0;
+    }
+    .segment-six{
+        top: 0;
+        width: $bar;
+        height: 100px;
+    }
+    .segment-seven{
+        height: $bar;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+    }
+    &.zero{
+        .segment-one, .segment-two, .segment-three, .segment-five, .segment-four, .segment-six{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.one{
+        .segment-two,.segment-three{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.two{
+        .segment-one, .segment-two, .segment-seven, .segment-five, .segment-four{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.three{
+        .segment-one, .segment-two, .segment-three, .segment-four, .segment-seven{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.four{
+        .segment-two, .segment-three, .segment-six, .segment-seven{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.five{
+        .segment-one, .segment-three, .segment-four, .segment-seven, .segment-six{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.six{
+        & :not(.segment-two){
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.seven{
+        .segment-one, .segment-three, .segment-two{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.eight{
+        & *{
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &.nine{
+        & :not(.segment-five){
+            background-color: $activeColor;
+            z-index: 9;
+        }
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+}
+.dots{
+    height: $height;
+    display: inline-block;
+    width: 100px;
+    position: relative;
+    & *{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $inactiveColor;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .top{
+        top: 10px;
+    }
+    .bottom{
+        bottom: 10px;
+    }
+}
+.signature{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    font-size: 10em;
+}
