@@ -1,39 +1,99 @@
-let date, second, minute, hour;
 
 class Clock {
     constructor(){
         this.classNames = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
-        this.secondOne = document.getElementById('second-one')
-        this.secondTwo = document.getElementById('second-two')
-        this.minuteOne = document.getElementById('minute-one')
-        this.minuteTwo = document.getElementById('minute-two')
-        this.hourOne = document.getElementById('hour-one')
-        this.hourTwo = document.getElementById('hour-two')
+        this.secondSelector = document.querySelectorAll('.seconds')
+        this.minuteSelector = document.querySelectorAll('.minutes')
+        this.hourSelector = document.querySelectorAll('.hours')
+        this.dots = document.querySelectorAll('.dots *')
+
+        this.second = []
+        this.minute = []
+        this.hour = []
+        this.date = new Date()
+
+        this.audio = document.getElementById('audio')
     }
 
     run(){
         setInterval(() => {
-            date = new Date()
+            this.date = new Date()
 
-            second = date.getSeconds() < 10 ? [0, date.getSeconds()] : date.getSeconds().toString().split('')
-            minute = date.getMinutes() < 10 ? [0, date.getMinutes()] : date.getMinutes().toString().split('')
-            hour = date.getHours() < 10 ? [0, date.getHours()] : date.getHours().toString().split('')
+            this.updateSecond()
 
-            this.secondOne.className = 'segments '+this.getClassName(second[0])
-            this.secondTwo.className = 'segments '+this.getClassName(second[1])
-            this.minuteOne.className = 'segments '+this.getClassName(minute[0])
-            this.minuteTwo.className = 'segments '+this.getClassName(minute[1])
-            this.hourOne.className = 'segments '+this.getClassName(hour[0])
-            this.hourTwo.className = 'segments '+this.getClassName(hour[1])
+
+            this.playAudio()
 
         }, 1000)
+    }
+
+    updateSecond(){
+        let second = this.date.getSeconds()
+
+        this.second = second < 10 ? [0, second] : second.toString().split('');
+
+        this.secondSelector.forEach((secondNode, index) => {
+
+            secondNode.className = 'segments seconds '+this.getClassName(this.second[index])
+
+        });
+
+        if(second === 0){
+            this.updateMinute()
+        }
+
+    }
+
+    updateMinute(){
+        let minute = this.date.getMinutes()
+        this.minute = minute < 10 ? [0, minute] : minute.toString().split('')
+
+        this.minuteSelector.forEach((minuteNode, index) => {
+            minuteNode.className = 'segments minutes ' + this.getClassName(this.minute[index])
+        })
+
+        if(minute === 0){
+            this.updateHour()
+        }
+
+    }
+
+    updateHour(){
+        let hour = this.date.getHours()
+
+        this.hour = hour < 10 ? [0, hour] : hour.toString().split('')
+
+        this.hourSelector.forEach((hourNode, index) => {
+            hourNode.className = 'segments hours ' + this.getClassName(this.hour[index])
+        })
     }
 
     getClassName(number){
         return this.classNames[number]
     }
+    toggleDots(){
+        setInterval(() => {
+            this.dots.forEach((dot) => {
+                dot.classList.toggle('active')
+            })
+        }, 500)
+
+        return this;
+    }
+    boot(){
+        this.updateSecond()
+        this.updateMinute()
+        this.updateHour()
+
+
+        return this
+    }
+
+    playAudio(){
+        this.audio.play()
+    }
 
 }
 
-(new Clock()).run()
+(new Clock()).boot().toggleDots().run()

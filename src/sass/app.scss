@@ -1,5 +1,5 @@
 $inactiveColor: #eee;
-$activeColor: red;
+$activeColor: #1abc9c;
 
 $height: 200px;
 $width: 100px;
@@ -13,14 +13,11 @@ html, body, .container{
 }
 
 .container{
-    max-width: 980px;
+    width: 1100px;
     margin: auto;
     display: flex;
     align-items: center;
-}
-
-.watch-body{
-    vertical-align: middle;
+    justify-items: center;
 }
 
 .segments{
@@ -33,6 +30,7 @@ html, body, .container{
     .segment{
         position: absolute;
         background-color: $inactiveColor;
+        transition: background-color 0.3s;
     }
     .segment-one{
         top: 0;
@@ -146,6 +144,7 @@ html, body, .container{
     display: inline-block;
     width: 100px;
     position: relative;
+    margin-right: 25px;
     & *{
         position: absolute;
         width: 50px;
@@ -154,12 +153,16 @@ html, body, .container{
         background-color: $inactiveColor;
         left: 50%;
         transform: translateX(-50%);
+        transition: background-color 0.6s;
     }
     .top{
         top: 10px;
     }
     .bottom{
         bottom: 10px;
+    }
+    & .active{
+        background-color: $activeColor;
     }
 }
 .signature{
