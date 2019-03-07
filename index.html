@@ -10,8 +10,9 @@
     </head>
     <body>
         <div class="container">
+            <audio src="assets/tick.mp3" id="audio" style="display: none;"></audio>
             <div class="watch-body">
-                <div class="segments" id="hour-one">
+                <div class="segments hours" id="hour-one">
                     <div class="segment-one segment"></div>
                     <div class="segment-two segment"></div>
                     <div class="segment-three segment"></div>
@@ -20,29 +21,7 @@
                     <div class="segment-six segment"></div>
                     <div class="segment-seven segment"></div>
                 </div>
-                <div class="segments" id="hour-two">
-                    <div class="segment-one segment"></div>
-                    <div class="segment-two segment"></div>
-                    <div class="segment-three segment"></div>
-                    <div class="segment-four segment"></div>
-                    <div class="segment-five segment"></div>
-                    <div class="segment-six segment"></div>
-                    <div class="segment-seven segment"></div>
-                </div>
-                <div class="dots">
-                    <div class="top"></div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="segments" id="minute-one">
-                    <div class="segment-one segment"></div>
-                    <div class="segment-two segment"></div>
-                    <div class="segment-three segment"></div>
-                    <div class="segment-four segment"></div>
-                    <div class="segment-five segment"></div>
-                    <div class="segment-six segment"></div>
-                    <div class="segment-seven segment"></div>
-                </div>
-                <div class="segments" id="minute-two">
+                <div class="segments hours" id="hour-two">
                     <div class="segment-one segment"></div>
                     <div class="segment-two segment"></div>
                     <div class="segment-three segment"></div>
@@ -52,10 +31,10 @@
                     <div class="segment-seven segment"></div>
                 </div>
                 <div class="dots">
-                    <div class="top"></div>
-                    <div class="bottom"></div>
+                    <div class="top active"></div>
+                    <div class="bottom active"></div>
                 </div>
-                <div class="segments" id="second-one">
+                <div class="segments minutes" id="minute-one">
                     <div class="segment-one segment"></div>
                     <div class="segment-two segment"></div>
                     <div class="segment-three segment"></div>
@@ -64,7 +43,29 @@
                     <div class="segment-six segment"></div>
                     <div class="segment-seven segment"></div>
                 </div>
-                <div class="segments" id="second-two">
+                <div class="segments minutes" id="minute-two">
+                    <div class="segment-one segment"></div>
+                    <div class="segment-two segment"></div>
+                    <div class="segment-three segment"></div>
+                    <div class="segment-four segment"></div>
+                    <div class="segment-five segment"></div>
+                    <div class="segment-six segment"></div>
+                    <div class="segment-seven segment"></div>
+                </div>
+                <div class="dots">
+                    <div class="top active"></div>
+                    <div class="bottom active"></div>
+                </div>
+                <div class="segments seconds" id="second-one">
+                    <div class="segment-one segment"></div>
+                    <div class="segment-two segment"></div>
+                    <div class="segment-three segment"></div>
+                    <div class="segment-four segment"></div>
+                    <div class="segment-five segment"></div>
+                    <div class="segment-six segment"></div>
+                    <div class="segment-seven segment"></div>
+                </div>
+                <div class="segments seconds" id="second-two">
                     <div class="segment-one segment"></div>
                     <div class="segment-two segment"></div>
                     <div class="segment-three segment"></div>
