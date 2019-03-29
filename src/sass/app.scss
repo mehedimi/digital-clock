@@ -1,5 +1,5 @@
 $inactiveColor: #eee;
-$activeColor: #1abc9c;
+$activeColor: #e74c3c;
 
 $height: 200px;
 $width: 100px;
@@ -29,7 +29,6 @@ html, body, .container{
     z-index: 2;
     .segment{
         position: absolute;
-        background-color: $inactiveColor;
         transition: background-color 0.3s;
     }
     .segment-one{
@@ -37,7 +36,6 @@ html, body, .container{
         left: 0;
         height: $bar;
         width: 100%;
-
     }
     .segment-two{
         width: $bar;
