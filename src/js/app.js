@@ -12,6 +12,7 @@ class Clock {
         this.minute = []
         this.hour = []
         this.date = new Date()
+        this.isClicked = false;
 
         this.audio = document.getElementById('audio')
     }
@@ -85,13 +86,15 @@ class Clock {
         this.updateSecond()
         this.updateMinute()
         this.updateHour()
-
+        window.addEventListener('click', () => this.isClicked = true);
 
         return this
     }
 
     playAudio(){
-        this.audio.play()
+        if (this.isClicked) {
+            this.audio.play();
+        }
     }
 
 }
