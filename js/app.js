@@ -1,1 +1,286 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var i=t[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(o,i,function(t){return e[t]}.bind(null,i));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=0)}([function(e,t,n){n(1),e.exports=n(2)},function(e,t){function n(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}(new(function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.classNames=["zero","one","two","three","four","five","six","seven","eight","nine"],this.secondSelector=document.querySelectorAll(".seconds"),this.minuteSelector=document.querySelectorAll(".minutes"),this.hourSelector=document.querySelectorAll(".hours"),this.dots=document.querySelectorAll(".dots *"),this.second=[],this.minute=[],this.hour=[],this.date=new Date,this.isClicked=!1,this.audio=document.getElementById("audio")}var t,o,i;return t=e,(o=[{key:"run",value:function(){var e=this;setInterval((function(){e.date=new Date,e.updateSecond(),e.playAudio()}),1e3)}},{key:"updateSecond",value:function(){var e=this,t=this.date.getSeconds();this.second=t<10?[0,t]:t.toString().split(""),this.secondSelector.forEach((function(t,n){t.className="segments seconds "+e.getClassName(e.second[n])})),0===t&&this.updateMinute()}},{key:"updateMinute",value:function(){var e=this,t=this.date.getMinutes();this.minute=t<10?[0,t]:t.toString().split(""),this.minuteSelector.forEach((function(t,n){t.className="segments minutes "+e.getClassName(e.minute[n])})),0===t&&this.updateHour()}},{key:"updateHour",value:function(){var e=this,t=this.date.getHours();this.hour=t<10?[0,t]:t.toString().split(""),this.hourSelector.forEach((function(t,n){t.className="segments hours "+e.getClassName(e.hour[n])}))}},{key:"getClassName",value:function(e){return this.classNames[e]}},{key:"toggleDots",value:function(){var e=this;return setInterval((function(){e.dots.forEach((function(e){e.classList.toggle("active")}))}),500),this}},{key:"boot",value:function(){var e=this;return this.updateSecond(),this.updateMinute(),this.updateHour(),window.addEventListener("click",(function(){return e.isClicked=!0})),this}},{key:"playAudio",value:function(){this.isClicked&&this.audio.play()}}])&&n(t.prototype,o),i&&n(t,i),e}())).boot().toggleDots().run()},function(e,t){}]);
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
+/***/ (() => {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Clock = /*#__PURE__*/function () {
+  function Clock() {
+    _classCallCheck(this, Clock);
+
+    this.classNames = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    this.secondSelector = document.querySelectorAll('.seconds');
+    this.minuteSelector = document.querySelectorAll('.minutes');
+    this.hourSelector = document.querySelectorAll('.hours');
+    this.dots = document.querySelectorAll('.dots *');
+    this.second = [];
+    this.minute = [];
+    this.hour = [];
+    this.date = new Date();
+    this.isClicked = false;
+    this.audio = document.getElementById('audio');
+  }
+
+  _createClass(Clock, [{
+    key: "run",
+    value: function run() {
+      var _this = this;
+
+      setInterval(function () {
+        _this.date = new Date();
+
+        _this.updateSecond();
+
+        _this.playAudio();
+      }, 1000);
+    }
+  }, {
+    key: "updateSecond",
+    value: function updateSecond() {
+      var _this2 = this;
+
+      var second = this.date.getSeconds();
+      this.second = second < 10 ? [0, second] : second.toString().split('');
+      this.secondSelector.forEach(function (secondNode, index) {
+        secondNode.className = 'segments seconds ' + _this2.getClassName(_this2.second[index]);
+      });
+
+      if (second === 0) {
+        this.updateMinute();
+      }
+    }
+  }, {
+    key: "updateMinute",
+    value: function updateMinute() {
+      var _this3 = this;
+
+      var minute = this.date.getMinutes();
+      this.minute = minute < 10 ? [0, minute] : minute.toString().split('');
+      this.minuteSelector.forEach(function (minuteNode, index) {
+        minuteNode.className = 'segments minutes ' + _this3.getClassName(_this3.minute[index]);
+      });
+
+      if (minute === 0) {
+        this.updateHour();
+      }
+    }
+  }, {
+    key: "updateHour",
+    value: function updateHour() {
+      var _this4 = this;
+
+      var hour = this.date.getHours();
+      this.hour = hour < 10 ? [0, hour] : hour.toString().split('');
+      this.hourSelector.forEach(function (hourNode, index) {
+        hourNode.className = 'segments hours ' + _this4.getClassName(_this4.hour[index]);
+      });
+    }
+  }, {
+    key: "getClassName",
+    value: function getClassName(number) {
+      return this.classNames[number];
+    }
+  }, {
+    key: "toggleDots",
+    value: function toggleDots() {
+      var _this5 = this;
+
+      setInterval(function () {
+        _this5.dots.forEach(function (dot) {
+          dot.classList.toggle('active');
+        });
+      }, 500);
+      return this;
+    }
+  }, {
+    key: "boot",
+    value: function boot() {
+      var _this6 = this;
+
+      this.updateSecond();
+      this.updateMinute();
+      this.updateHour();
+      window.addEventListener('click', function () {
+        return _this6.isClicked = true;
+      });
+      return this;
+    }
+  }, {
+    key: "playAudio",
+    value: function playAudio() {
+      if (this.isClicked) {
+        this.audio.play();
+      }
+    }
+  }]);
+
+  return Clock;
+}();
+
+new Clock().boot().toggleDots().run();
+
+/***/ }),
+
+/***/ "./src/sass/app.scss":
+/*!***************************!*\
+  !*** ./src/sass/app.scss ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/js/app": 0,
+/******/ 			"css/app": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			for(moduleId in moreModules) {
+/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 				}
+/******/ 			}
+/******/ 			if(runtime) var result = runtime(__webpack_require__);
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkdigital_clock"] = self["webpackChunkdigital_clock"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./src/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./src/sass/app.scss")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
